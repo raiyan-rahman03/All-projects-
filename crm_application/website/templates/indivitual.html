@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="card mb-3">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="true" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Add your image source here -->
+                    <img src="{{ indivitual.image.url }}" alt="Image" class="img-fluid">
+
+
+                </div>
+                <div class="col-md-9">
+                    <h3 class="card-header bg-secondary text-white">Information about {{ indivitual.first_name }} {{ indivitual.last_name }}:</h3>
+                  
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>First Name:</strong> {{indivitual.first_name}}</li>
+                        <li class="list-group-item"><strong>Last Name:</strong> {{indivitual.last_name}}</li>
+                        <li class="list-group-item"><strong>Roll No:</strong> {{indivitual.roll_no}}</li>
+                        <li class="list-group-item"><strong>Email:</strong> {{indivitual.email}}</li>
+                        <li class="list-group-item"><strong>Phone:</strong> {{indivitual.phone}}</li>
+                        <li class="list-group-item"><strong>Date of Birth:</strong> {{indivitual.date_of_birth}}</li>
+                        <li class="list-group-item"><strong>Address:</strong> {{indivitual.address}}</li>
+                        <li class="list-group-item"><strong>Classroom No:</strong> {{indivitual.class_room_no}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <a class="btn btn-secondary" href="{%url 'home'%}" role="button">Back</a>
+            <a class="btn btn-primary" href="{%url 'update' indivitual.id%}" role="button">Update</a>
+            <a class="btn btn-danger" href="{%url 'delete_record' indivitual.id%}" role="button">Delete</a>
+          
+            
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

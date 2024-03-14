@@ -1,0 +1,86 @@
+<!-- website/templates/home.html -->
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<style>
+    body {
+      background-color:rgb(100, 99, 99);
+    }
+  </style>
+<br>
+{% if user.is_authenticated %}
+<table class="table  table-light  table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">first_name</th>
+            <th scope="col">last_name</th>
+            <th scope="col">roll_no</th>
+            <th scope="col">grade_level</th>
+            <th scope="col">email</th>
+            <th scope="col">phone</th>
+            <th scope="col">date_of_birth</th>
+            <th scope="col">address</th>
+            <th scope="col">class_room_no</th>
+            <th scope="col">Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if data %}
+        {%for i in data %}
+        
+        <tr>
+            <td>{{i.first_name}}</td>
+            <td>{{i.last_name}}</td>
+            <td>{{i.roll_no}}</td>
+            <td>{{i.grade_level}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.phone}}</td> 
+            <td>{{i.date_of_birth}}</td>
+            <td>{{i.address}}</td>
+            <td>{{i.class_room_no}}</td>
+            <td><a href="{% url 'indivitual_data' i.id %}">{{ i.id }}</a></td>
+
+            
+            
+
+
+
+
+        </tr>
+        {% endfor%}
+        {%endif%}
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+{% else %}
+<div class="col-md-6 offset-md-3">
+    <h1>Login</h1>
+    <br>
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" name="user" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" required>
+        </div>
+
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+</div>
+
+{% endif %}
+{% endblock %}
